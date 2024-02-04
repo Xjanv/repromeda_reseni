@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -10,10 +11,13 @@ import pandas as pd
 import numpy as np
 from scipy.stats import ttest_ind, shapiro, levene, mannwhitneyu, fisher_exact
 import matplotlib.pyplot as plt
-#import os
+from pathlib import Path
+
+zadani_path = Path(__file__).parent / '../zadani/transfery.csv'
+
 
 # Načtení dat z CSV souboru
-df = pd.read_csv('C:/Users/xjanv/OneDrive/Plocha/REPROMEDA/transfery.csv')
+df = pd.read_csv(zadani_path)
 
 
 # In[ ]:
@@ -151,10 +155,10 @@ from scipy.stats import ttest_ind, shapiro, levene
 
 #Otestování
 # Vytvoření nového DataFrame pouze s potřebnými hodnotami
-#df_filtered = df[(df['vek_embryo'] != 'x') & (~df['vek_embryo'].isna()) & (df['f_donor'] != 1)]
-#df_filtered = df_filtered.dropna(subset=['vek_embryo', 'clinical_gravidity'])
-#df_filtered['vek_embryo'] = pd.to_numeric(df_filtered['vek_embryo'], errors='coerce')
-filtered_df = df[(df['vek_embryo'] != 'x') & (~df['vek_embryo'].isna()) & (df['f_donor'] != 1) & (~df['clinical_gravidity'].isna())]
+df_filtered = df[(df['vek_embryo'] != 'x') & (~df['vek_embryo'].isna()) & (df['f_donor'] != 1)]
+df_filtered = df_filtered.dropna(subset=['vek_embryo', 'clinical_gravidity'])
+df_filtered['vek_embryo'] = pd.to_numeric(df_filtered['vek_embryo'], errors='coerce')
+#filtered_df = df[(df['vek_embryo'] != 'x') & (~df['vek_embryo'].isna()) & (df['f_donor'] != 1) & (~df['clinical_gravidity'].isna())]
 
 
 # Ověření normality dat
@@ -246,6 +250,8 @@ else:
 #1.F) 
 #Z výsledných tabulek z úkolu A a D vytvořte a uložte grafy ve formátu .png, kde na ose x bude první a na ose y druhý řádek tabulky.
 
+
+
 # Vytvoření sloupcového grafu z úlohy D
 ax = result_table['Total'][:-1].plot(kind='bar', color='darkgray', edgecolor='black')
 
@@ -258,7 +264,8 @@ plt.ylabel('Celkový počet transferů')
 plt.ylim(0, 1000)
 
 # Uložení grafu do souboru .png na plochu
-plt.savefig('C:/Users/xjanv/OneDrive/Plocha/REPROMEDA/sloupcovy_graf.png', bbox_inches='tight')
+odpovedi_path = Path(__file__).parent / 'sloupcovy_graf1.png'
+plt.savefig(odpovedi_path, bbox_inches='tight')
 plt.show()
 
 
@@ -274,7 +281,8 @@ plt.title('Úspěšnost embryotransferu podle věku matky')
 plt.ylim(0, 100)
 
 # Uložení grafu do souboru .png na plochu
-plt.savefig('C:/Users/xjanv/OneDrive/Plocha/REPROMEDA/uspesnost_embryotransferu.png', bbox_inches='tight')
+odpovedi_path = Path(__file__).parent / 'sloupcovy_graf2.png'
+plt.savefig(odpovedi_path, bbox_inches='tight')
 
 # Zobrazení grafu
 plt.show()
@@ -320,9 +328,11 @@ def create_genetic_protocol(doc, name, birth_number, sampling_date):
     table.cell(2, 1).text = sampling_date
 
 # Příklad použití
+odpovedi_path = Path(__file__).parent / 'vysledny_protokol.docx'
+
 doc = Document()
 create_genetic_protocol(doc, 'Jan Novák', '123456/7890', '2024-02-10')
-doc.save('vysledny_protokol.docx')
+doc.save(odpovedi_path)
 
 
 # In[ ]:
