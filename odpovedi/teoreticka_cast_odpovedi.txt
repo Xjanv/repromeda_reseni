@@ -1,0 +1,57 @@
+1.Uveďte nukleotidovou sekvenci exonu 9 genu CFTR. (tip: hledejte “ensembl”)
+GATTTCTTACAAAAGCAAGAATATAAGACATTGGAATATAACTTAACGACTACAGAAGTAGTGATGGAGAATGTAACAGCCTTCTGGGAGGAG 
+
+
+2.Uveďte, jaké onemocnění způsobují patogenní mutace v genu CFTR a některé uveďte.
+Patogenní mutace v genu CFTR způsobují cystickou fibrózu. Ta ovlivňuje různé části těla a způsobuje celou řadu příznaků.jako např.:
+- Respirační problémy (chronická bronchitida, pneumonie..)
+- Trávicí problémy (nedostatečné trávení, diabetes..)
+- Reprodukční problémy (mužská neplodnost)
+- Kožní problémy (zvýšená koncentrace soli na kůži může působit podráždění)
+
+3.Uveďte, co znamená autosomálně recesivní přenašečtví.
+Autosomálně recesivní přenašečtví znamená, že některé genetické nemoci se objevují pouze tehdy, když má člověk dvě kopie určitého špatného genu. Tyto nemoci jsou předávány od rodičů na potomky.
+
+Autosomální: Ovlivňuje běžné chromozomy (ne pohlavní).
+Recesivní: Nemoc se projeví, pouze když má člověk dvě stejné špatné kopie genu.
+Přenašečtví: Někteří lidé mohou mít jednu špatnou kopii genu, ale nemoc se u nich neprojeví. Jsou však schopni předat tuto špatnou kopii svým dětem.
+
+Tedy, když oba rodiče jsou "přenašeči" špatného genu, jejich děti mají šanci dostat dvě špatné kopie a mít danou nemoc.
+
+
+4. Rozepiště, jak byste postupovali při vytváření SQL datábaze na Linux serveru, tak aby byla zajištěna integrita dat.
+Při vytváření SQL databáze na Linux serveru bych postupoval v bodech takto:
+a) Snaha pochopit potřeby uživatelů a firemní požadavky pro naplánování databáze
+b) Navržení struktury databáze (jak by měla vypadat data, jak je organizovat do formy tabulek...)
+c) Volba databázového systému (např. PostgreSQL)
+d) Vytvoření samotné databáze 
+   - vytvoření tabulek a vztahů podle navržené struktury (datového modelu)
+   - zavedení pravidel pro zajištění integrity dat
+	- definovat primární a cizí klíče
+	- definovat pravidla pro omezení hodnot v určitých sloupcích
+	- nastavit výchozí hodnoty pro sloupce
+	- zajistit validaci dat (např. specifikovat podmínky pro kontrolu dat při jejich vkládání, při detekci neplatných dat generovat zprávy o chybách atd.)
+e) Testování vytvořené databáze, abychom zajistili, že všechno funguje, jak má (např. nastavené pravidla pro zajištění integrity dat viz výše)
+		
+
+5.Uveďte, co znamená SQL Injection a jak se tomu vyvarovat.
+Je to forma kybernetického útoku, kdy útočník vloží škodlivý SQL kód do dotazu, který je následně prováděn v databázi. Cílem je získat neoprávněný přístup k citlivým datům, měnit strukturu databáze nebo i převzít kontrolu nad celým systémem.
+
+Vyvarovat se můžeme:
+a) omezení práv přístupu uživatele k databázi dle jeho oprávnění
+b) použitím parametrizovaných dotazů
+c) ošetřením uživatelského vstupu k neutralizaci potenciálně nebezpečných znaků na vstupu
+d) monitoring - dohled nad operacemi s databází
+e) používání připravených příkazů místo sestavování SQL dotazů dynamicky v kódu
+
+6.Zjistěte, co znamená error: “Error in .local: Cannot allocate a new connection: 16 connections already opened” a napiště jak byste postupovali při jeho opravě.
+Chyba znamená, že bylo dosaženo maximálního počtu otevřených spojení s databází a nelze vytvořit další. Postupoval bych:
+a) kontrolou aktuálního stavu otevřených spojení -> uzavřel bych nevyužitá spojení
+b) kontrola konfigurace databázového systému -> zjistit, zda není nastaveno omezení na maximální počet otevřených spojení
+V případě, že by předchozí body nezabraly, tak bych přistoupil k možnostem upgradu databázového systému, poolingu, využití cloudu atd.
+
+7.Zjistěte, co znamená error: “Error in if: argument is of length zero” a napiště jak byste postupovali při jeho opravě.
+V jazyce R chyba obvykle naznačuje, že podmínka uvnitř "if" má nulovou délku, což může být důsledek prázdného nebo neexistujícího objektu. Zkontroloval bych, že proměnná, kterou používám v konstrukci "if" existuje, má správný název a není prázdná.
+
+8.Napište, proč se dělá Sekvenování nové generace (NGS)?
+NGS chápu jako techniku, která umožňuje detailní studium genetické informace. NGS umožňuje současné sekvenování mnoha částí DNA najednou, což je jeden z důvodů proč se provádí, protože můžeme získat mnoho informací najednou, což je rychlejší a efektivnější než tradiční metody (které postupně nahrazuje). Metoda také generuje hodně genetických dat, což je důležité pro studium genů spojených s reprodukčními problémy. Přispívá také k vývoji léčby neplodnosti.
